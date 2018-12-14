@@ -1,10 +1,20 @@
+%% DETERMINISTIC OPTIMIZATION PROBLEM USING fmincon %%
+%% Created by Swaminath VENKATESWARAN (14.07.2018)
+
 function X = optimization(P0)
+
+%% Function Input(s): Random guess points provided by the used (Ex: 10*rand(8,2))
+%% Function Ouput(s): Optimal positions of guess points to cover short distances and avoid obstacles
+
+
+%% INITIALIZATION
 
     global A;
     global B;
     global C;
     global r;
     global D;
+    
     A= [1 9];
     B= [9 1];
     C= [2 3;2 8;8 2;8 9];
@@ -95,22 +105,22 @@ function X = optimization(P0)
 
 %% PLOTTING %%
 
-M= [A;X;B];
-M1= [A;P0;B];
-viscircles(C,r,'Color','r');
-[x,y,z]=cylinder(0.7);
-x0=C(1,1);y0=C(1,2);
-x=x+x0;
-y=y+y0;
-hold on;
-surf(x,y,z);
-rotate3d;
-rectangle('Position',[4 0 2 4],'Facecolor',[0 0.45 0.74],'EdgeColor','w')
-rectangle('Position',[4 6 2 4],'Facecolor',[0 0.45 0.74],'EdgeColor','w')
-plot(M(:,1),M(:,2),'Linewidth',2);
-plot(M1(:,1),M1(:,2),'--');
-xlim([0 10]);
-ylim([0 10]);
-grid on;
+    M= [A;X;B];
+    M1= [A;P0;B];
+    viscircles(C,r,'Color','r');
+    [x,y,z]=cylinder(0.7);
+    x0=C(1,1);y0=C(1,2);
+    x=x+x0;
+    y=y+y0;
+    hold on;
+    surf(x,y,z);
+    rotate3d;
+    rectangle('Position',[4 0 2 4],'Facecolor',[0 0.45 0.74],'EdgeColor','w')
+    rectangle('Position',[4 6 2 4],'Facecolor',[0 0.45 0.74],'EdgeColor','w')
+    plot(M(:,1),M(:,2),'Linewidth',2);
+    plot(M1(:,1),M1(:,2),'--');
+    xlim([0 10]);
+    ylim([0 10]);
+    grid on;
 
 end
